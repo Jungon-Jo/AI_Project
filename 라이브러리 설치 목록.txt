@@ -1,0 +1,32 @@
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install seaborn   //고급 통계 차트
+pip install scipy   //고급함수 미적분
+pip install statsmodels
+pip install wordcloud
+pip install pymysql
+pip install gradio
+pip install streamlit
+pip install langchain-community
+pip install scikit-learn
+pip install ydata-profiling
+pip install tensorflow
+pip install sqlalchemy
+pip install embeddings
+pip install sentence-transformers
+pip install tf-keras //주의 : tensorflow-macos(2.16.2 버전 필요) 호환성 문제(tf-keras는 2.18 버전 필요)
+pip install faiss-cpu
+pip install ollapipma
+pip install openai-whisper
+pip install -U langchain-ollama
+pip install gtts //텍스트를 음성으로 변환하는 모델
+
+
+LLM 설치 금지 파일
+pip install tensorflow-macos //호환성 문제
+
+설치 방법(Mac)
+1. 라이브러리를 빌드할 프로젝트 이동(가상환경)
+2. 가상환경 실행(source .venv/bin/activate)
+3. "pip install [라이브러리]" 코드 입력(자동 설치)
