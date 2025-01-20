@@ -21,6 +21,8 @@ pip install ollapipma
 pip install openai-whisper
 pip install -U langchain-ollama
 pip install gtts //텍스트를 음성으로 변환하는 모델
+pip install konlpy //자연어 처리
+pip install fpdf
 
 
 LLM 설치 금지 파일
