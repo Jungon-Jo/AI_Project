@@ -7,3 +7,5 @@ llm/flagged/
 llm/images/
 llm/include/
 llm/share/
+llm/index.faiss
+llm/index.pkl
