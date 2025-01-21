@@ -1,0 +1,121 @@
+<사전 설치>
+1. 가상환경 생성
+2. pip install django scikit-learn pandas numpy joblib matplotlib seaborn
+
+<슈퍼유저 생성>
+python manage.py createsuperuser
+
+<실행 명령어>
+python manage.py makemigrations    // 모델의 변경 사항을 반영
+python manage.py migrate    // 데이터베이스 스키마 변경
+python diabetes_predictor/ml_model/model_trainer.py   // 머신러닝 모델 학습 실행
+python manage.py runserver   // 개발 서버 실행
+localhost: 8000 접속
+
+<프로젝트 구조>
+django_project/
+├── manage.py
+├── dataset/
+│   └── diabetes.csv
+├── diabetes_prediction/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── diabetes_predictor/
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── models.py
+    ├── forms.py
+    ├── views.py
+    ├── urls.py
+    ├── ml_model/
+    │   ├── __init__.py
+    │   ├── model_trainer.py
+    │   ├── diabetes_model.joblib
+    │   └── scaler.joblib
+    └── templates/
+        └── diabetes_predictor/
+            ├── index.html
+            └── result.html
+
+***최상위 디렉토리: django_project/
+<manage.py>
+Django 프로젝트를 관리하는 주요 스크립트
+개발자가 명령줄에서 Django 명령어(runserver, migrate, createsuperuser 등)를 실행할 때 사용
+
+<dataset 폴더>
+데이터셋 파일이 저장되는 디렉토리
+diabetes.csv: 당뇨병 예측을 위한 데이터셋 파일로 보입니다. 머신러닝 모델 훈련에 사용
+
+Django 프로젝트 디렉토리: diabetes_prediction/
+<__init__.py>
+Python 패키지로 인식되도록 만드는 파일. 빈 파일일 가능성이 높음
+
+<settings.py>
+Django 프로젝트의 환경 설정을 정의
+데이터베이스 설정, 앱 등록, 정적 파일 경로, 템플릿 디렉토리 등을 포함
+
+<urls.py>
+Django의 URL 라우팅을 정의
+프로젝트의 전역 URL 매핑을 관리하며, 앱에서 정의된 URL을 포함
+
+<wsgi.py>
+웹 서버와 Django 애플리케이션 간의 인터페이스를 제공하는 파일로 배포 시 사용됨
+
+
+*** Django 앱 디렉토리: diabetes_predictor/
+Django에서 각 앱은 독립적으로 기능하는 모듈입니다. 이 앱의 목적은 당뇨병 예측 기능을 제공
+
+<__init__.py>
+이 디렉토리를 Python 패키지로 인식시키는 파일
+
+<admin.py>
+Django 관리자 페이지에서 데이터베이스 모델을 관리할 수 있도록 등록하는 파일
+
+<apps.py>
+앱의 구성 정보를 포함하는 파일
+앱 이름을 설정하거나, 초기화 코드를 정의할 수 있음
+
+<models.py>
+데이터베이스 모델을 정의하는 파일
+당뇨병 데이터를 저장하거나 관리하기 위한 데이터 구조를 정의
+
+<forms.py>
+Django의 폼(Form)을 정의하는 파일
+사용자가 입력한 데이터를 서버로 제출받아 유효성을 검사하는 데 사용
+
+<views.py>
+앱의 핵심 로직이 포함된 파일
+사용자 요청을 처리하고 템플릿을 반환하거나, 예측 결과를 계산하는 코드를 포함
+
+<urls.py>
+앱 내부의 URL 라우팅을 정의하는 파일
+예: /predict, /result와 같은 경로와 뷰 함수(views.py)를 연결
+
+**** ml_model/
+이 디렉토리는 머신러닝 관련 파일들을 모아둔 공간
+
+<__init__.py>
+이 디렉토리를 Python 패키지로 인식
+
+<model_trainer.py>
+머신러닝 모델을 학습시키는 코드가 포함된 파일
+diabetes.csv 데이터를 사용하여 모델을 학습시키고, 결과를 저장
+
+<diabetes_model.joblib>
+학습된 머신러닝 모델이 저장된 파일
+Python의 Joblib 라이브러리를 사용해 모델을 저장
+
+<scaler.joblib>
+데이터를 정규화하거나 표준화하는 데 사용되는 스케일러 객체가 저장된 파일
+데이터 전처리에 사용
+
+*** templates/
+HTML 템플릿 파일을 저장하는 디렉토리
+
+diabetes_predictor/
+앱과 관련된 템플릿 파일을 모아둔 하위 디렉토리입니다.
+index.html: 메인 페이지 템플릿으로, 사용자 입력 양식(Form) 등이 포함
+result.html: 예측 결과를 표시하는 템플릿
